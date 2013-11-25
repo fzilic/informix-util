@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ksh
 
 declare -a _spaces
 declare -a _valid_nums

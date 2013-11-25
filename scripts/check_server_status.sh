@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ksh
 
 # This script is used to test some of the server performance statistics.
 
