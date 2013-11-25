@@ -1,0 +1,77 @@
+#!/bin/sh
+#RHEL/CENTOS init.d script 
+
+#
+# informix     Informix instances startup script
+#
+# chkconfig:   2345 96 05
+# description: Starting Informix databases
+
+# Source function library
+. /etc/rc.d/init.d/functions
+
+start()
+{
+        source /etc/profile.d/informix.sh
+
+        onstat=`onstat -`
+        onstat_expected="shared memory not initialized for INFORMIXSERVER '"$INFORMIXSERVER"'"
+
+        echo -n $"Starting Informix '"$INFORMIXSERVER"':"
+
+        if [ "$onstat" == "$onstat_expected" ]; 
+        then
+                oninit
+                RETVAL=$?
+        else
+                RETVAL=1
+        fi
+
+        [ $RETVAL = 0 ] && success || failure
+        echo
+
+        unset onstat_expected onstat
+
+}
+
+stop()
+{
+        source /etc/profile.d/informix.sh
+
+        onstat=`onstat -`
+        onstat_expected="shared memory not initialized for INFORMIXSERVER '"$INFORMIXSERVER"'"
+
+        echo -n $"Stopping Informix '"$INFORMIXSERVER"':"
+
+        if [ "$onstat" != "$onstat_expected" ]; 
+        then
+                onmode -ky
+                RETVAL=$?
+        else
+                RETVAL=1
+        fi
+
+        [ $RETVAL = 0 ] && success || failure
+        echo
+
+        unset onstat onstat_expected
+
+}
+
+case "$1" in
+        start)
+                start
+                ;;
+        stop)
+                stop
+                ;;
+	restart)
+		stop
+		sleep 5
+		start 
+		;;
+        *)
+                echo $"Usage: $0 {start|stop}"
+esac
+
+exit
