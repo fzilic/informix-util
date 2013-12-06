@@ -109,17 +109,43 @@ export DBDATE=$_format
 _databases=($(echo $_query | dbaccess sysmaster 2>/dev/null | sed '/^$/d' | sed 's/(expression) *//g'))
 
 tput clear
-tput cup 5 17
+tput cup 5 25
 tput rev
 echo "  D A T A B A S E S  "
 tput sgr0
 
-tput cup 7 15
-echo "Name"
-tput cup 7 40 
-echo "Created"
+tput cup 8 15
+echo "INFORMIX SERVER:"
+tput cup 8 40
+echo $INFORMIXSERVER
+tput sgr0
 
-_line_idx=8
+tput cup 9 15
+echo "Executed at:"
+tput cup 9 40
+echo $(date +%Y"/"%m"/"%d" - "%H":"%m":"%S)
+tput sgr0
+
+tput cup 10 15
+echo "Hostname:" 
+tput cup 10 40
+echo $(hostname)
+tput sgr0
+
+tput cup 11 15
+echo "IP Address:"
+tput cup 11 40
+echo $(ifconfig  | grep inet | grep -v inet6 | grep -v 127.0.0.1 | awk '{print $2}' | cut -d ":" -f 2)
+tput sgr0
+
+tput cup 14 15
+tput rev
+echo "Name"
+tput cup 14 40 
+echo "Created"
+tput sgr0
+
+_line_idx=16
 for _database in ${_databases[@]}; do
   tput cup $_line_idx 15
   echo ${_database%%:*}
