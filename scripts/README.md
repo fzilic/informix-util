@@ -28,4 +28,6 @@ http://www-03.ibm.com/systems/power/software/aix/linux/toolbox/download.html
 
 Adjust PATH variable so /opt/freeware/bin executables are before standard AIX executables
 
-
+===
+#### Linux note:
+Most modern Linux distributions don't install ksh by default, install ksh or pdksh package for your distribution
