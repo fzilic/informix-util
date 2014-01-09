@@ -14,3 +14,6 @@ Set of environment scripts as a reminder for fresh installs
 ## config-examples
 Set of Informix configurtaion files as reminder for fresh installs
 
+---
+
+All scripts are licensed under Simplified BSD License.
