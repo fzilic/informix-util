@@ -7,6 +7,7 @@ A simple collection configuration examples, and utility scripts to ease up day t
 
 ## scripts
 Some small utility scripts used to ease up everyday tasks
+
 ---
 All scripts are licensed under Simplified BSD License.
 
