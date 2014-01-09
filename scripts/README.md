@@ -17,6 +17,11 @@ Scripts should work for:
  2. Unix
   * AIX 6.1
 
+Scripts have been tested and used with Informix versions
+ * 11.50xC8 or greater
+ * 11.70xC4 or greater
+ * 12.10xC1 or greater
+
 ===
 #### AIX note: 
 Scripts require some software installed from [IBM AIX Toolbox](http://www-03.ibm.com/systems/power/software/aix/linux/toolbox/download.html)
