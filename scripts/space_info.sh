@@ -1,14 +1,11 @@
 #!/bin/ksh
 
-declare -a _spaces
-declare -a _valid_nums
 _line_idx="7"
 
 _resp=""
 
 containsElement () {
-  local e
-  for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
+  for e in "$@"; do [[ "$e" == "$1" ]] && return 0; done
   return 1
 }
 
@@ -16,8 +13,7 @@ containsElement () {
 for _space in $(echo """SELECT sdbs.dbsnum || '-' || sdbs.name 
   FROM sysdbspaces sdbs""" | dbaccess sysmaster 2> /dev/null | sed 's/.expression. *//')
 do
-  _spaces+=($_space)
-  echo $_space
+  set -A _spaces ${_spaces[@]} $_space
 done
 
 tput clear 
@@ -28,16 +24,17 @@ tput sgr0
 
 for _space in "${_spaces[@]}"; do 
   tput cup $_line_idx 15
-  _space=${_space/-/ }
+  _space=$(echo $_space | sed 's/-/ /g')
   echo $_space
-  ((_line_idx++))
-  _valid_nums+=(${_space%% *})
+  ((_line_idx=_line_idx+1))
+  set -A _valid_nums ${_valid_nums[@]} ${_space%% *}
 done
 
 
-((_line_idx++))
+((_line_idx=_line_idx+1))
 tput cup $_line_idx 15
-read -p "Eneter space number: " _resp
+read _resp?"Eneter space number: "
+((_line_idx=_line_idx+1))
 
 containsElement $_resp "${_valid_nums[@]}"
 if [ "1" == "$?" ]; then
@@ -59,7 +56,7 @@ _size_mib=$(echo $_space_info | cut -d \  -f 6)
 _free_mib=$(echo $_space_info | cut -d \  -f 8)
 
 for i in {1..3}; do 
-  ((_line_idx++))
+  ((_line_idx=_line_idx+1))
 done
 
 tput cup $_line_idx 17
@@ -67,14 +64,14 @@ tput rev
 echo "D B S p a c e    S i z e"
 tput sgr0
 
-((_line_idx++))
-((_line_idx++))
+((_line_idx=_line_idx+1))
+((_line_idx=_line_idx+1))
 tput cup $_line_idx 15
 echo "DbSpace: $_dbs_name"
-((_line_idx++))
+((_line_idx=_line_idx+1))
 tput cup $_line_idx 15
 echo "Size: $_size_mib"
-((_line_idx++))
+((_line_idx=_line_idx+1))
 tput cup $_line_idx 15
 echo "Free: $_free_mib"
 
