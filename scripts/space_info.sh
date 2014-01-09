@@ -1,3 +1,6 @@
+#
+#  Shows usage information on Informix dbspaces
+#
 #  Copyright (c) 2014, Franjo Žilić
 #  All rights reserved.
 #  

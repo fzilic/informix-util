@@ -1,3 +1,8 @@
+#
+#  Creates a database from compressed dbexport
+#
+#  Uses tar and compress utilities to extract dbexport folder
+#  
 #  Copyright (c) 2014, Franjo Žilić
 #  All rights reserved.
 #  

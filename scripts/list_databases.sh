@@ -1,3 +1,6 @@
+#
+#  List all databases on current instance.
+#
 #  Copyright (c) 2014, Franjo Žilić
 #  All rights reserved.
 #  
