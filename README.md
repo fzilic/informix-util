@@ -7,6 +7,8 @@ A simple collection configuration examples, and utility scripts to ease up day t
 
 ## scripts
 Some small utility scripts used to ease up everyday tasks
+---
+All scripts are licensed under Simplified BSD License.
 
 ## os-globals
 Set of environment scripts as a reminder for fresh installs
@@ -14,6 +16,3 @@ Set of environment scripts as a reminder for fresh installs
 ## config-examples
 Set of Informix configurtaion files as reminder for fresh installs
 
----
-
-All scripts are licensed under Simplified BSD License.
