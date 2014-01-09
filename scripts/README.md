@@ -19,8 +19,7 @@ Scripts should work for:
 
 ===
 #### AIX note: 
-Scripts require some software installed from IBM AIX Toolbox
-http://www-03.ibm.com/systems/power/software/aix/linux/toolbox/download.html
+Scripts require some software installed from [IBM AIX Toolbox](http://www-03.ibm.com/systems/power/software/aix/linux/toolbox/download.html)
 
   * sed-4.1.1-1
   * grep-2.5.1-1
